@@ -87,7 +87,7 @@ int main()
 	//ListInsert(L);
 	for (int i = 0; i < 10; i++)
 	{
-		ListInsert(L, i);
+		ListInsert(L, i,i);
 	}
 	cout << L->elem[0] << endl;
 	

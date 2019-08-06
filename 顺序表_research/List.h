@@ -62,19 +62,33 @@ void GetElem()
 
 }
 
-////5、插入操作
+////5、插入操作(有待完善)
 
-void ListInsert(SqList* L,int e)
+void ListInsert(SqList* L,int e,int i)
 {
+	//第一种情况
 	if (L->length == 0)
-	{
-		*(L->elem) = e;
-		L->length++;
-	}
-	else if (L->length < Initsize)
 	{
 		L->elem[L->length] = e;
 		L->length++;
+	}
+	//第二种情况
+	else if (i == L->length)
+	{
+		L->elem[L->length] = e;
+		L->length++;
+		
+	}
+	//第三种情况
+	else if (i < L->length && i >= 0)
+	{
+		L->elem[L->length] = e;
+		L->length++;
+	}
+	//第四种情况
+	else
+	{
+		cout << "插入位置不合理！" << endl;
 	}
 }
 
