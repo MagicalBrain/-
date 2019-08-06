@@ -1,12 +1,12 @@
 #include <iostream>
-#include "shunxubiao.h"
+#include "List.h"
 
 using namespace std;
 
 
 
 
-//有序顺序表求交集的函数
+//有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
 SqList Jiao(SqList n1,SqList n2)
 {
 	SqList* re;
@@ -43,15 +43,10 @@ SqList Jiao(SqList n1,SqList n2)
 	return *re;
 }
 
-
-
-int n1[] = {1,2,3,4,5,6,8,10,11};
-int n2[] = { 1,2,3,4,5,7,9,10,11,12,13 };
-
-int main()
+void test(int n1[],int n2[])
 {
 	//cout << sizeof(n1) / sizeof(int) << endl;
-	SqList* L1,*L2;
+	SqList* L1, * L2;
 	L1 = (SqList*)malloc(sizeof(SqList));
 	L2 = (SqList*)malloc(sizeof(SqList));
 
@@ -66,6 +61,40 @@ int main()
 	//Inv(*L);
 	SqList re = Jiao(*L1, *L2);
 	output(re);
+}
+
+int n1[] = {1,2,3,4,5,6,8,10,11};
+int n2[] = { 1,2,3,4,5,7,9,10,11,12,13 };
+
+void test01(int n1[])
+{
+
+}
+
+int main()
+{
+	//test(n1,n2);
+
+	//先分配内存
+	SqList* L;
+	L = (SqList*)malloc(sizeof(SqList));
+
+	InitList(L);
+	
+	int l = Length(L);
+	cout << l << endl;
+
+	//ListInsert(L);
+	for (int i = 0; i < 10; i++)
+	{
+		ListInsert(L, i);
+	}
+	cout << L->elem[0] << endl;
+	
+	for (int i = 0; i < 10; i++)
+	{
+		cout << L->elem[i] << endl;
+	}
 
 	return 0;
 }
