@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void fun01(SqList* L)
+int func01(SqList* L)
 /*
 王道书 P18 第二章第二节 综合题1
 */
@@ -14,7 +14,7 @@ void fun01(SqList* L)
 	if (l == 0)
 	{
 		cout << "该线性表为空，无法删除！（fun01）" << endl;
-		return;
+		return 0;
 	}
 	else
 	{
@@ -32,9 +32,98 @@ void fun01(SqList* L)
 		ListDelete(L, loca);
 		ListInsert(L, L->elem[l - 1], loca);
 		L->length--;
-		
+		return 1;
 		//cout<<""
 	}
+}
+
+int func02(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题2
+*/
+{
+	int t;
+	if (Length(L) < 1)
+	{
+		cout << "线性表为空！" << endl;
+		return 0;
+	}
+	else
+	{
+		for (int i = 0; i < (Length(L) /2); i++)
+		{
+			t = L->elem[i];
+			L->elem[i] = L->elem[Length(L) - 1 - i];
+			L->elem[Length(L) - 1 - i] = t;
+		}
+		return 1;
+	}
+		
+}
+
+int func03(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题3
+*/
+{
+	//int l = Length(L), t;
+	int e;
+	cout << "输入要删除的键值：" << endl;
+	cin >> e;
+	if (Length(L) < 1)
+	{
+		cout << "线性表为空！" << endl;
+		return 0;
+	}
+	else
+	{
+		for (int i = 0; i < Length(L); i++)
+		{
+			if (L->elem[i] == e)
+				ListDelete(L, i);
+		}
+		return 1;
+	}
+}
+
+int func04(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题4
+*/
+{
+	int s, t,l=Length(L),p;
+	cout << "输入要删除的元素值的范围：" << endl;
+	cin >> s >> t;
+
+	if (l < 1)
+	{
+		cout<<"线性表长度不合理！"<<endl;
+		return 0;
+	}
+	else if (s >= t)
+	{
+		cout << "输入数值范围不合理！" << endl;
+		return 0;
+	}
+	else
+	{
+		for (int i = 0; i < l; i++)
+		{
+			if (L->elem[i] > s && L->elem[i] < t)
+			{
+				p = L->elem[i + 1];
+				int n = 0;
+				while (p > s && p < t)
+				{
+					ListDelete(L, i + 1 + n);
+					n++;
+					p = L->elem[i + 1 + n];
+				}
+				ListDelete(L, i);
+			}
+		}
+	}
+	return 1;
 }
 
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
@@ -99,17 +188,16 @@ int n1[] = {1,2,3,4,5,6,8,10,11};
 int n2[] = { 1,2,3,4,5,7,9,10,11,12,13 };
 */
 
-
-int main()
+int test()
 {
-	//test(n1,n2);
-
 	//先分配内存
-	SqList* L;
+	SqList* L, * L1;
 	L = (SqList*)malloc(sizeof(SqList));
+	L1 = (SqList*)malloc(sizeof(SqList));
 
 	//初始化线性表
 	InitList(L);
+	InitList(L1);
 
 	int l = Length(L);
 	cout << l << endl;
@@ -122,13 +210,21 @@ int main()
 
 	//test_LocateElem(L);
 	//test_GetElem(L);
-
 	//test_ListDelete(L);
 
-	fun01(L);
+	//func01(L);
+	//func02(L);
+	//func03(L);
+	func04(L);
 
 	PrintList(L);
 	//DestroyList(L);
-	//getchar();
+
+	return 1;
+}
+
+int main()
+{
+	test();
 	return 0;
 }
