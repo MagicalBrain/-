@@ -110,9 +110,10 @@ ElemType GetElem(SqList* L,int loca)
 void ListInsert(SqList* L,int e,int i)
 {
 	//特殊情况
-	if (L->length == Initsize)
+	if (L->length >= Initsize)
 	{
-		ElemType* p;
+		ElemType* p,*t;
+		t = (ElemType*)malloc((L->size + Addsize) * sizeof(ElemType));
 		p = ListCopy(L);
 		if (p == NULL)
 		{
@@ -120,15 +121,15 @@ void ListInsert(SqList* L,int e,int i)
 			return;
 		}
 
-		realloc(L->elem,L->size + Addsize);
+		L->elem = t;
 		L->size += Addsize;
 
 		for (int i = 0; i < L->length; i++)
 		{
 			L->elem[i] = p[i];
-			cout << L->elem[i] << " ";
+			//cout << L->elem[i] << " ";
 		}
-		cout << endl;
+		//cout << endl;
 	}
 	//第一种情况（这个是为了创建线性表的时候用插入函数才写的，正常不用）
 	if (L->length == 0)

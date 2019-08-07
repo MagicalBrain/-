@@ -32,6 +32,7 @@ void fun01(SqList* L)
 		ListDelete(L, loca);
 		ListInsert(L, L->elem[l - 1], loca);
 		L->length--;
+		
 		//cout<<""
 	}
 }
@@ -109,13 +110,13 @@ int main()
 
 	//初始化线性表
 	InitList(L);
-	
+
 	int l = Length(L);
 	cout << l << endl;
 
 	CreatList(L);
 	cout << L->length << endl;
-	
+
 	PrintList(L);
 	//创建线性表并打印，结束
 
@@ -123,10 +124,11 @@ int main()
 	//test_GetElem(L);
 
 	//test_ListDelete(L);
-	
+
 	fun01(L);
 
 	PrintList(L);
-	
+	//DestroyList(L);
+	//getchar();
 	return 0;
 }
