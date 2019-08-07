@@ -113,12 +113,8 @@ int main()
 	int l = Length(L);
 	cout << l << endl;
 
-	//ListInsert(L);
-	for (int i = 0; i < 20; i++)
-	{
-		ListInsert(L, i,i);
-	}
-
+	CreatList(L);
+	cout << L->length << endl;
 	
 	PrintList(L);
 	//创建线性表并打印，结束

@@ -20,25 +20,35 @@ int* CreatRand()
 	cout << "输入随机数的大小范围：" << endl;
 	cin >> len;
 
-	p = (int*)malloc(n * sizeof(int));
+	p = (int*)malloc((n+1) * sizeof(int));
+	p[0] = n;
 
 	cout << endl << "生成的随机数：" << endl;
 	srand((unsigned int)time(0));
-	for (int i = 0; i < n; i++)
+	for (int i = 1; i < n+1; i++)
 	{
 		int re = rand();
 		p[i] = re % len;
 		cout << p[i] << " ";
 	}
+	cout << endl;
+	return p;
 }
 
 //创建线性表函数
-void CreatList(SqList* L,int n[])
+void CreatList(SqList* L)
 /*
 
 */
 {
+	int* p;
+	p = CreatRand();
 
+	int n = p[0];
+	for (int i = 0; i < n; i++)
+	{
+		ListInsert(L, p[i+1], i);
+	}
 }
 
 void test_LocateElem(SqList* L)
