@@ -91,10 +91,13 @@ int main()
 	}
 	cout << L->elem[0] << endl;
 	
-	for (int i = 0; i < 10; i++)
-	{
-		cout << L->elem[i] << endl;
-	}
+	PrintList(L);
+
+	int n;
+	cin >> n;
+	ListInsert(L, 100, n);
+
+	PrintList(L);
 
 	return 0;
 }

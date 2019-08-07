@@ -50,7 +50,7 @@ int Length(SqList* L)
 
 ////3、按键值查找操作
 
-void LocateElem()
+void LocateElem(SqList* L)
 {
 
 }
@@ -62,7 +62,7 @@ void GetElem()
 
 }
 
-////5、插入操作(有待完善)
+////5、插入操作
 
 void ListInsert(SqList* L,int e,int i)
 {
@@ -82,7 +82,12 @@ void ListInsert(SqList* L,int e,int i)
 	//第三种情况
 	else if (i < L->length && i >= 0)
 	{
-		L->elem[L->length] = e;
+		for (int j = L->length-1; j >= i; j--)
+		{
+			L->elem[j + 1] = L->elem[j];
+		}
+
+		L->elem[i] = e;
 		L->length++;
 	}
 	//第四种情况
@@ -101,9 +106,20 @@ void ListDelete()
 
 ////7、输出操作
 
-void PrintList()
+void PrintList(SqList* L)
 {
-
+	if (L->length > 0)
+	{
+		for (int i = 0; i < L->length; i++)
+		{
+			cout << L->elem[i] << " ";
+		}
+		cout << endl;
+	}
+	else
+	{
+		cout << "输出失败，线性表为空" << endl;
+	}
 }
 
 ////8、判空操作
