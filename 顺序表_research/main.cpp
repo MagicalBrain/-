@@ -1,12 +1,43 @@
 #include <iostream>
 #include "List.h"
+#include "TestForFuntion.h"
 
 using namespace std;
 
+void fun01(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题1
+*/
+{
+	int min,loca=0,l=Length(L);
 
+	if (l == 0)
+	{
+		cout << "该线性表为空，无法删除！（fun01）" << endl;
+		return;
+	}
+	else
+	{
+		min = L->elem[0];
 
+		for (int i = 0; i < l; i++)
+		{
+			if (L->elem[i] < min)
+			{
+				min = L->elem[i];
+				loca = i;
+			}
+		}
+
+		ListDelete(L, loca);
+		ListInsert(L, L->elem[l - 1], loca);
+		L->length--;
+		//cout<<""
+	}
+}
 
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
+/*
 SqList Jiao(SqList n1,SqList n2)
 {
 	SqList* re;
@@ -16,13 +47,13 @@ SqList Jiao(SqList n1,SqList n2)
 		n = n2.length;
 	else
 		n = n1.length;
-	
+
 	int k = 0;
 	w = (ElemType*)malloc(n * sizeof(ElemType));
 
 	re = (SqList*)malloc(sizeof(SqList));
 	re->elem = w;
-	re->size = n;
+	//re->size = n;
 
 	for (int i = 0; i < n1.length; i++)
 	{
@@ -34,7 +65,7 @@ SqList Jiao(SqList n1,SqList n2)
 				k++;
 				//re->length++;
 			}
-			
+
 		}
 	}
 
@@ -65,11 +96,8 @@ void test(int n1[],int n2[])
 
 int n1[] = {1,2,3,4,5,6,8,10,11};
 int n2[] = { 1,2,3,4,5,7,9,10,11,12,13 };
+*/
 
-void test01(int n1[])
-{
-
-}
 
 int main()
 {
@@ -79,25 +107,30 @@ int main()
 	SqList* L;
 	L = (SqList*)malloc(sizeof(SqList));
 
+	//初始化线性表
 	InitList(L);
 	
 	int l = Length(L);
 	cout << l << endl;
 
 	//ListInsert(L);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		ListInsert(L, i,i);
 	}
-	cout << L->elem[0] << endl;
+
 	
 	PrintList(L);
+	//创建线性表并打印，结束
 
-	int n;
-	cin >> n;
-	ListInsert(L, 100, n);
+	//test_LocateElem(L);
+	//test_GetElem(L);
+
+	//test_ListDelete(L);
+	
+	fun01(L);
 
 	PrintList(L);
-
+	
 	return 0;
 }
