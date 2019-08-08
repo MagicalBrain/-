@@ -126,6 +126,90 @@ int func04(SqList* L)
 	return 1;
 }
 
+int func05(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题5
+*/
+{
+	int s, t, l = Length(L), p;
+	cout << "输入要删除的元素值的范围：" << endl;
+	cin >> s >> t;
+
+	if (l < 1)
+	{
+		cout << "线性表长度不合理！" << endl;
+		return 0;
+	}
+	else if (s >= t)
+	{
+		cout << "输入数值范围不合理！" << endl;
+		return 0;
+	}
+	else
+	{
+		for (int i = 0; i < l; i++)
+		{
+			if (L->elem[i] >= s && L->elem[i] <= t)
+			{
+				p = L->elem[i + 1];
+				int n = 0;
+				while (p >= s && p <= t)
+				{
+					ListDelete(L, i + 1 + n);
+					n++;
+					p = L->elem[i + 1 + n];
+				}
+				ListDelete(L, i);
+			}
+		}
+	}
+	return 1;
+}
+
+int func06(SqList* L)
+{
+	int l = Length(L),num=0,flag=0;
+	ElemType* p;
+
+	if (l < 1)
+	{
+		cout << "线性表长度不合理" << endl;
+		return 0;
+	}
+	else
+	{
+		p = (ElemType*)malloc(l * sizeof(ElemType));
+		p[0] = L->elem[0];
+		num = 1;
+
+
+		for (int i = 1; i < l; i++)
+		{
+			for (int j = 0; j < num; j++)
+			{
+				if (L->elem[i] != p[j])
+				{
+					flag++;
+				}
+			}
+			if (flag == num)
+			{
+				p[num] = L->elem[i];
+				num++;
+			}
+			flag = 0;
+		}
+		
+
+		for (int i = 0; i < num; i++)
+		{
+			L->elem[i] = p[i];
+		}
+		L->length = num;
+	}
+	return 1;
+}
+
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
 /*
 SqList Jiao(SqList n1,SqList n2)
@@ -215,7 +299,9 @@ int test()
 	//func01(L);
 	//func02(L);
 	//func03(L);
-	func04(L);
+	//func04(L);
+	//func05(L);
+	func06(L);
 
 	PrintList(L);
 	//DestroyList(L);
