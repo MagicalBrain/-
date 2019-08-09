@@ -173,6 +173,9 @@ int func05(SqList* L)
 }
 
 int func06(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题6
+*/
 {
 	int l = Length(L), num = 0, flag = 0;
 	ElemType* p;
@@ -217,21 +220,60 @@ int func06(SqList* L)
 }
 
 SqList* func07(SqList* L1, SqList* L2)
+/*
+王道书 P18 第二章第二节 综合题7
+*/
 {
-	int l1 = Length(L1), l2 = Length(L2);
+	int l1 = Length(L1), l2 = Length(L2), num = 0;
 	SqList* re;
 	re = (SqList*)malloc(sizeof(SqList));
-	//re->elem = (ElemType*)malloc((l1 + l2) * sizeof(ElemType));
 
 	InitList(re);
 
 	if (l1 >= 1 && l2 >= 1)
 	{
+		int i = 0, j = 0;
+		while (i < l1 && j < l2)
+		{
+			if (L1->elem[i] < L2->elem[j])
+			{
+				ListInsert(re, L1->elem[i], num);
+				i++;
+			}
+			else
+			{
+				ListInsert(re, L2->elem[j], num);
+				j++;
+			}
+			num++;
+		}
+		if (i < l1)
+		{
+			for (int k = i; k < l1; k++)
+			{
+				ListInsert(re, L1->elem[k], num);
+				num++;
+			}
+		}
+		else if (j<l2)
+		{
+			for (int k = j; k < l2; k++)
+			{
+				ListInsert(re, L2->elem[k], num);
+				num++;
+			}
+		}
 
 		return re;
 	}
 
 	return NULL;
+}
+
+int func08(SqList*L,int m,int n)
+{
+
+	return 0;
 }
 
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)

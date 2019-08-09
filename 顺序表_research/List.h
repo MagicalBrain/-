@@ -189,6 +189,11 @@ ElemType ListDelete(SqList* L,int n)
 
 void PrintList(SqList* L)
 {
+	if (L == NULL)
+	{
+		cout << "输出失败，线性表为空" << endl;
+		return;
+	}
 	if (L->length > 0)
 	{
 		for (int i = 0; i < L->length; i++)
