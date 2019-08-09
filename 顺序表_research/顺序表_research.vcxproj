@@ -151,7 +151,8 @@
   <ItemGroup>
     <ClInclude Include="func.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="TestForFuntion.h" />
+    <ClInclude Include="CreatFuntion.h" />
+    <ClInclude Include="TestFunction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

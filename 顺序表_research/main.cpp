@@ -1,7 +1,8 @@
 #include <iostream>
 #include "List.h"
-#include "TestForFuntion.h"
+#include "CreatFuntion.h"
 #include "func.h"
+#include "TestFunction.h"
 
 using namespace std;
 
@@ -84,6 +85,6 @@ int test()
 
 int main()
 {
-	test();
+	test12();
 	return 0;
 }

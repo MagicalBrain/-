@@ -266,84 +266,45 @@ x:1->有序；0->无序
 	}
 }
 
-//为第8题写的测试辅助函数
-SqList* testForfunc08(int l1,int l2)
+
+
+void CreatListF(SqList* L)
+/*
+L:处理的线性表
+f: 重复元素的个数
+*/
 {
-	//int l1,l2;
-	SqList* L1, * L2, * re;
-	L1 = (SqList*)malloc(sizeof(SqList));
-	L2 = (SqList*)malloc(sizeof(SqList));
-	re = (SqList*)malloc(sizeof(SqList));
+	int f;
+	cout << "输入重复元素的个数：" << endl;
+	cin >> f;
 
-	InitList(L1);
-	InitList(L2);
-	InitList(re);
-	
-	CreatList(L1,l1, L2,l2, 0);
-
-	//l1 = Length(L1), l2 = Length(L2);
-	if (l1 >1 && l2 > 1)
+	if ( f > (L->length / 2))
 	{
-		for (int i = 0; i < l1; i++)
+		int* p = NULL;
+
+		p = CreatRand(0);
+
+		int n = p[0];
+		for (int i = 0; i < n; i++)
 		{
-			ListInsert(re, L1->elem[i], i);
+			ListInsert(L, p[i + 1], i);
 		}
-		for (int i = 0; i < l2; i++)
+
+		srand((unsigned int)time(0));
+		int re = rand();
+		int e = re % n;
+
+		
+		int k = p[e + 1];
+		cout << k << endl;
+		int loca;
+		for (int i = 0; i < f; i++)
 		{
-			ListInsert(re, L2->elem[i], l1+i);
+			int re1 = rand();
+			loca = re1 % n;
+			ListInsert(L, k, loca);
 		}
 	}
-
-	if (re != NULL)
-		return re;
-	return NULL;
-}
-
-//测试基本操作函数
-
-void test_LocateElem(SqList* L)
-{
-	int n, loca;
-	cin >> n;
-	loca = LocateElem(L, n);
-	if (loca > -1)
-	{
-		cout << "找到了！" << endl;
-		cout << "Location:" << loca << endl;
-	}
 	else
-		cout << "未找到!" << endl;
+		cout << "参数错误！" << endl;
 }
-
-void test_GetElem(SqList* L)
-{
-	int n;
-	cin >> n;
-	ElemType e;
-	e = GetElem(L, n);
-	if (e > -1)
-	{
-		cout << e << endl;
-	}
-	else
-		cout << "位置无效！" << endl;
-}
-
-void test_ListInsert(SqList* L)
-{
-
-}
-
-void test_ListDelete(SqList* L)
-{
-	int n;
-	cin >> n;
-	ElemType e = ListDelete(L, n);
-	if (~e)
-	{
-		cout << e << endl;
-	}
-	else
-		cout << "删除失败！" << endl;
-}
-

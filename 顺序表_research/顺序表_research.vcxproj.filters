@@ -23,10 +23,13 @@
     <ClInclude Include="List.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestForFuntion.h">
+    <ClInclude Include="func.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="func.h">
+    <ClInclude Include="CreatFuntion.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFunction.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

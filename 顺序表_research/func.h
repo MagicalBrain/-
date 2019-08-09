@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "List.h"
-#include "TestForFuntion.h"
+#include "CreatFuntion.h"
 
 using namespace std;
 
@@ -377,7 +377,7 @@ int func10(SqList* L)
 
 int func11(SqList* L1,SqList*L2)
 /*
-王道书 P18 第二章第二节 综合题10
+王道书 P18 第二章第二节 综合题11
 备注：
 */
 {
@@ -418,6 +418,68 @@ int func11(SqList* L1,SqList*L2)
 	}
 
 	return 0;
+}
+
+int func12(SqList* L)
+{
+	int l = Length(L), num = 0, flag = 0;
+	ElemType* p;
+
+	if (l < 1)
+	{
+		cout << "线性表长度不合理" << endl;
+		return 0;
+	}
+	else
+	{
+		p = (ElemType*)malloc(l * sizeof(ElemType));
+		p[0] = L->elem[0];
+		num = 1;
+
+		for (int i = 1; i < l; i++)
+		{
+			for (int j = 0; j < num; j++)
+			{
+				if (L->elem[i] != p[j])
+				{
+					flag++;
+				}
+			}
+			if (flag == num)
+			{
+				p[num] = L->elem[i];
+				num++;
+			}
+			flag = 0;
+		}
+
+		for (int i = 0; i < num; i++)
+		{
+			cout << p[i] << " ";
+		}
+		cout << endl;
+
+		ElemType* n = (ElemType*)malloc(num*sizeof(ElemType));
+		//SqList* re = (SqList*)malloc(sizeof(SqList));
+
+		for (int i = 0; i < num; i++)
+		{
+			n[i] = 0;
+			for (int j = 0; j < l; j++)
+			{
+				if (p[i] == L->elem[j])
+				{
+					n[i]++;
+				}
+			}
+			if (n[i] > l/2)
+			{
+				return p[i];
+			}
+		}
+	}
+
+	return -1;
 }
 
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
