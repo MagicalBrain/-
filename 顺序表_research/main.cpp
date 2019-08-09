@@ -13,16 +13,18 @@ main.cpp
 int test()
 {
 	//先分配内存
-	SqList* L, * L1;
+	SqList* L0, * L, * L1;
 	L = (SqList*)malloc(sizeof(SqList));
+	L0 = (SqList*)malloc(sizeof(SqList));
 	L1 = (SqList*)malloc(sizeof(SqList));
 
 	//初始化线性表
 	InitList(L);
 	InitList(L1);
+	InitList(L0);
 
-	//CreatList(L,L1,1);
-	CreatList(L,0);
+	CreatList(L,L1,1);
+	//CreatList(L,0);
 
 	//cout << endl;
 	//CreatRand1();
@@ -52,10 +54,11 @@ int test()
 	//func04(L);
 	//func05(L);
 	//func06(L);
-	//L = func07(L, L1);
+	L0 = func07(L, L1);
 
-	PrintList(L);
-	cout << L->length << endl;
+	PrintList(L0);
+	cout << L0->length << "	中位数：" << L0->elem[L0->length / 2 - 1] << endl;
+	cout<<"序号："<< L0->length / 2 << endl;
 
 	//func08(L, l1, l2);
 
@@ -65,11 +68,15 @@ int test()
 	cin >> n;
 	func09(L, n);
 	*/
-	func10(L);
+	//func10(L);
+	cout << "中位数： "<<func11(L, L1) << endl;
 
+	cout << "L1:" << endl;
 	PrintList(L);
 	cout << L->length << endl;
-	//PrintList(L1);
+	cout << "L2:" << endl;
+	PrintList(L1);
+	
 	//DestroyList(L);
 
 	return 1;

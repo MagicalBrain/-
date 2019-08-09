@@ -375,6 +375,51 @@ int func10(SqList* L)
 	return 0;
 }
 
+int func11(SqList* L1,SqList*L2)
+/*
+王道书 P18 第二章第二节 综合题10
+备注：
+*/
+{
+	int l1 = Length(L1), l2 = Length(L2);
+	int re = 0, num = 0;
+
+	if (l1 > 0 && l2 > 0)
+	{
+		int i = 0, j = 0;
+		while (num<l1)
+		{
+			if (L1->elem[i] < L2->elem[j])
+			{
+				re = L1->elem[i];
+				i++;
+			}
+			else
+			{
+				re = L2->elem[j];
+				j++;
+			}
+			num++;
+		}
+
+		i--; j--;
+
+		if (L1->elem[i]  < L2->elem[j])
+		{
+			re = L2->elem[j];
+		}
+		else
+		{
+			re = L1->elem[i];
+			
+		}
+		
+		return re;
+	}
+
+	return 0;
+}
+
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
 /*
 SqList Jiao(SqList n1,SqList n2)
