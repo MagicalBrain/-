@@ -22,7 +22,7 @@ int test()
 	InitList(L1);
 
 	//CreatList(L,L1,1);
-	//CreatList(L,1);
+	CreatList(L,1);
 
 	//cout << endl;
 	//CreatRand1();
@@ -37,10 +37,14 @@ int test()
 	//test_LocateElem(L);
 	//test_GetElem(L);
 	//test_ListDelete(L);
+	
+	/*
 	int l1, l2;
 	cout << "输入两线性表长度:" << endl;
 	cin>>l1>>l2;
 	L = testForfunc08(l1,l2);
+	*/
+	
 
 	//func01(L);
 	//func02(L);
@@ -53,7 +57,11 @@ int test()
 	PrintList(L);
 	cout << L->length << endl;
 
-	func08(L, l1, l2);
+	//func08(L, l1, l2);
+	int n;
+	cout << "输入查找键值：" << endl;
+	cin >> n;
+	func09(L, n);
 
 	PrintList(L);
 	cout << L->length << endl;

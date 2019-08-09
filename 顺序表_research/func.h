@@ -298,6 +298,61 @@ int func08(SqList*L,int m,int n)
 	return 0;
 }
 
+int func09(SqList* L,int e)
+/*
+王道书 P18 第二章第二节 综合题9
+备注：
+*/
+{
+	int l = Length(L),mid,flag=1;
+	ElemType tmp;
+	if (l > 0)
+	{
+		if (e > L->elem[l - 1])
+		{
+			ListInsert(L, e, l);
+		}
+		else if (e < L->elem[0])
+		{
+			ListInsert(L, e, 0);
+		}
+		else
+		{
+			mid = l / 2;
+			while (flag)
+			{
+				if (e < L->elem[mid])
+				{
+					l = mid;
+					mid = l / 2;
+				}
+				else if (e > L->elem[mid])
+				{
+					mid = (l + mid) / 2;
+				}
+				else if(e == L->elem[mid])
+				{
+					//flag = 0;
+					tmp = L->elem[mid];
+					L->elem[mid] = L->elem[mid + 1];
+					L->elem[mid + 1] = tmp;
+					break;
+				}
+				if (flag == Length(L))
+				{
+					ListInsert(L, e, l);
+					break;
+				}
+				flag++;
+				//break;
+			}
+			
+		}
+		return 1;
+	}
+	return 0;
+}
+
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
 /*
 SqList Jiao(SqList n1,SqList n2)
