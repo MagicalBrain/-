@@ -271,7 +271,29 @@ SqList* func07(SqList* L1, SqList* L2)
 }
 
 int func08(SqList*L,int m,int n)
+/*
+王道书 P18 第二章第二节 综合题8
+备注：算法逻辑应该是没问题的，但是不知道哪里出问题了，
+一到main函数的return 0程序就会崩溃。
+*/
 {
+	SqList* re;
+	re = (SqList*)malloc(sizeof(SqList));
+	InitList(re);
+
+	if (L->length > 0 && m > 0 && n > 0)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			re->elem[i] = L->elem[m + i];
+		}
+		for (int i = 0; i < m; i++)
+		{
+			re->elem[n+i] = L->elem[i];
+		}
+		L = re;
+		return 1;
+	}
 
 	return 0;
 }

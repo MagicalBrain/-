@@ -24,10 +24,10 @@ int test()
 	//CreatList(L,L1,1);
 	//CreatList(L,1);
 
-	cout << endl;
+	//cout << endl;
 	//CreatRand1();
-	PrintList(L);
-	PrintList(L1);
+	//PrintList(L);
+	//PrintList(L1);
 	//PrintList(L1);
 	//创建线性表并打印，结束
 
@@ -49,6 +49,11 @@ int test()
 	//func05(L);
 	//func06(L);
 	//L = func07(L, L1);
+
+	PrintList(L);
+	cout << L->length << endl;
+
+	func08(L, l1, l2);
 
 	PrintList(L);
 	cout << L->length << endl;

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "List.h"
 #include <time.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -240,11 +241,13 @@ x:1->ÓÐÐò£»0->ÎÞÐò
 	{
 	case 1:
 		p1 = CreatRand(l1,len,1);
-		p2 = CreatRand(l2, len, 1);
+		Sleep(500);
+		p2 = CreatRand(l2, 2*len, 1);
 		break;
 	case 0:
 		p1 = CreatRand(l1, len, 0);
-		p2 = CreatRand(l2, len, 0);
+		Sleep(500);
+		p2 = CreatRand(l2, 2*len, 0);
 		break;
 	default:
 		p1 = NULL, p2 = NULL;
