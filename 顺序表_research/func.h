@@ -353,6 +353,28 @@ int func09(SqList* L,int e)
 	return 0;
 }
 
+int func10(SqList* L)
+/*
+王道书 P18 第二章第二节 综合题10
+备注：
+*/
+{
+	int l = Length(L),n,t;
+	cout << "输入左移的位数：" << endl;
+	cin >> n;
+	if (l>0 && n>0)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			t = ListDelete(L, l - 1);
+			ListInsert(L, t, 0);
+		}
+		return 1;
+	}
+	cout << "左移失败！" << endl;
+	return 0;
+}
+
 //有序顺序表求交集的函数 (该函数存在问题，输出结果不对！)
 /*
 SqList Jiao(SqList n1,SqList n2)

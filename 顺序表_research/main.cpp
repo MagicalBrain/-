@@ -22,7 +22,7 @@ int test()
 	InitList(L1);
 
 	//CreatList(L,L1,1);
-	CreatList(L,1);
+	CreatList(L,0);
 
 	//cout << endl;
 	//CreatRand1();
@@ -58,10 +58,14 @@ int test()
 	cout << L->length << endl;
 
 	//func08(L, l1, l2);
+
+	/*
 	int n;
 	cout << "ÊäÈë²éÕÒ¼üÖµ£º" << endl;
 	cin >> n;
 	func09(L, n);
+	*/
+	func10(L);
 
 	PrintList(L);
 	cout << L->length << endl;
