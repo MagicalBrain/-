@@ -85,6 +85,6 @@ int test()
 
 int main()
 {
-	test12();
+	test13();
 	return 0;
 }

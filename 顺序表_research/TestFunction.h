@@ -164,3 +164,30 @@ int test12()
 
 	return 1;
 }
+
+
+int test13()
+{
+	//先分配内存
+	SqList* L;
+	L = (SqList*)malloc(sizeof(SqList));
+
+	//初始化线性表
+	InitList(L);
+
+	CreatList(L,0);
+
+	PrintList(L);
+	cout << L->length << endl;
+
+	int re;
+	re = func13(L);
+	cout << "最小正整数：" << re << endl;
+
+	PrintList(L);
+	cout << L->length << endl;
+
+	//DestroyList(L);
+
+	return 1;
+}
